@@ -334,40 +334,6 @@ var onReady = function() {
                             },
                         });
 
-                        forkChoiceWindow.on('close', function(){
-                            app.quit();
-                        });
-
-                        // choose the fork side
-                        ipc.on('forkChoice_choosen', function(e, daoFork) {
-                            // prevent that it closes the app
-                            forkChoiceWindow.removeAllListeners('close');
-                            forkChoiceWindow.close();
-
-                            ipc.removeAllListeners('forkChoice_choosen');
-
-                            log.debug('Enable DAO Fork? ', daoFork);
-
-                            // no need to restart
-                            if(!daoFork)
-                                return resolve();
-
-                            // set forkside
-                            ethereumNode.daoFork = daoFork;
-                            
-                            // start node
-                            ethereumNode.restart(ethereumNode.type, 'main')
-                                .then(function nodeRestarted() {
-                                    appMenu();
-
-                                    resolve();
-                                })
-                                .catch((err) => {
-                                    log.error('Error restarting node', err);
-
-                                    reject(err);
-                                });
-                        });
                     });
                 }
             })

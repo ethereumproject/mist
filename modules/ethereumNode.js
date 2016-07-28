@@ -204,7 +204,6 @@ class EthereumNode extends EventEmitter {
                 this._node.stdin.removeAllListeners('error');
                 this._node.removeAllListeners('error');
                 this._node.removeAllListeners('exit');
-                
                 this._node.kill('SIGINT');
 
                 // after some time just kill it if not already done so
@@ -220,7 +219,7 @@ class EthereumNode extends EventEmitter {
                     this._node = null;
 
                     resolve();
-                }); 
+                });
             })
                 .then(() => {
                     this.state = STATES.STOPPED;
@@ -240,7 +239,7 @@ class EthereumNode extends EventEmitter {
 
 
 
-    /** 
+    /**
      * Send Web3 command to socket.
      * @param  {String} method Method name
      * @param  {Array} [params] Method arguments
@@ -248,7 +247,7 @@ class EthereumNode extends EventEmitter {
      */
     send (method, params) {
         return this._socket.send({
-            method: method, 
+            method: method,
             params: params
         });
     }
@@ -292,12 +291,9 @@ class EthereumNode extends EventEmitter {
                 this._saveUserData('node', this._type);
                 this._saveUserData('network', this._network);
 
-                // FORK RELATED
-                this._saveUserData('daoFork', this.daoFork);
-
                 return this._socket.connect({ path: ipcPath }, {
                         timeout: 30000 /* 30s */
-                    })  
+                    })
                     .then(() => {
                         this.state = STATES.CONNECTED;
                     })
@@ -377,17 +373,12 @@ class EthereumNode extends EventEmitter {
                     args = (nodeType === 'geth') 
                         ? ['--fast', '--cache', '512'] 
                         : ['--unsafe-transactions'];
-
-                    // FORK RELATED
-                    if(nodeType === 'geth' && this.daoFork)
-                        args.push((this.daoFork === 'true') ? '--support-dao-fork' : '--oppose-dao-fork');
                 }
 
                 let nodeOptions = Settings.nodeOptions;
 
                 if (nodeOptions && nodeOptions.length) {
                     log.debug('Custom node options', nodeOptions);
-
                     args = args.concat(nodeOptions);
                 }
 
@@ -399,12 +390,9 @@ class EthereumNode extends EventEmitter {
                 proc.once('error', (err) => {
                     if (STATES.STARTING === this.state) {
                         this.state = STATES.ERROR;
-                        
                         log.info('Node startup error');
-
                         // TODO: detect this properly
                         // this.emit('nodeBinaryNotFound');
-
                         reject(err);
                     }
                 });
@@ -423,7 +411,6 @@ class EthereumNode extends EventEmitter {
                     // check for startup errors
                     if (STATES.STARTING === this.state) {
                         let dataStr = data.toString().toLowerCase();
-
                         if ('geth' === nodeType) {
                             if (0 <= dataStr.indexOf('fatal: error')) {
                                 let err = new Error(`Geth error: ${dataStr}`);
@@ -461,7 +448,7 @@ class EthereumNode extends EventEmitter {
                         if (STATES.STARTING === this.state) {
                             log.info(`${NODE_START_WAIT_MS}ms elapsed, assuming node started up successfully`);
 
-                            resolve(proc);                        
+                            resolve(proc);
                         }
                     }, NODE_START_WAIT_MS);
                 })
@@ -510,12 +497,8 @@ class EthereumNode extends EventEmitter {
 
     _loadDefaults () {
         log.trace('Load defaults');
-
         this.defaultNodeType = Settings.nodeType || this._loadUserData('node') || DEFAULT_NODE_TYPE;
         this.defaultNetwork = Settings.network || this._loadUserData('network') || DEFAULT_NETWORK;
-        
-        // FORK RELATED
-        this.daoFork = this._loadUserData('daoFork');
     }
 
 
@@ -533,7 +516,6 @@ class EthereumNode extends EventEmitter {
         return null;
     }
 
-
     _saveUserData (path, data) {
         if(!data) return; // return so we dont write null, or other invalid data
 
@@ -546,13 +528,10 @@ class EthereumNode extends EventEmitter {
         }
     }
 
-
     _buildFilePath (path) {
-        return Settings.userDataPath + '/' + path;   
+        return Settings.userDataPath + '/' + path;
     }
-
 }
-
 
 const STATES = {
     STARTING: 0, /* Node about to be started */
@@ -563,13 +542,6 @@ const STATES = {
     ERROR: -1, /* Unexpected error */
 };
 
-
-
 EthereumNode.STARTING = 0;
 
-
-
-
-
 module.exports = new EthereumNode();
-

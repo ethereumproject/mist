@@ -94,7 +94,7 @@
             "runningNodeFound": "Lopende Ethereum node gevonden!",
             "startingNode": "Ethereum node starten...",
             "startedNode": "Applicatie starten...",
-            "nodeConnectionTimeout": "Ethereum node opstarten niet mogelijk!<br><small>Als u <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>Geth geinstalleerd heeft</a>, gebruik dan dit commando om het op te starten: <br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereum/mist/issues' class='button' target='_blank'> Of meld een fout </a></small>",
+            "nodeConnectionTimeout": "Ethereum node opstarten niet mogelijk!<br><small>Als u <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>Geth geinstalleerd heeft</a>, gebruik dan dit commando om het op te starten: <br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereumproject/mist/issues' class='button' target='_blank'> Of meld een fout </a></small>",
             "nodeBinaryNotFound": "Geen Ethereun node uitvoerbaar bestand gevonden!<br><small> <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'> Start er a.u.b. handmatig een. </a> </small>",
             "nodeSyncing": "Ethereum node moet synchroniseren, even gedult alstublieft...",
             "nodeSyncInfo": "Blok __currentBlock__ van __highestBlock__ aan het downloaden.",

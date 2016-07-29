@@ -89,7 +89,7 @@
             "runningNodeFound": "U gjet nyje Ethereumi në punë!",
             "startingNode": "Duke krijuar nyje Ethereumi...",
             "startedNode": "Duke filluar aplikacionin...",
-            "nodeConnectionTimeout": "Nuk mundi të fillojë krijimin e një nyje Ethereumi!<br><small>Nëse ju <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>installed Geth</a>, përdorni këtë komandë ta krijoni atë: <br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereum/mist/issues' class='button' target='_blank'> Ose raportoni një problem </a></small>",
+            "nodeConnectionTimeout": "Nuk mundi të fillojë krijimin e një nyje Ethereumi!<br><small>Nëse ju <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>installed Geth</a>, përdorni këtë komandë ta krijoni atë: <br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereumproject/mist/issues' class='button' target='_blank'> Ose raportoni një problem </a></small>",
             "nodeBinaryNotFound": "Nuk u gjet nyje binare Ethereumi!<br><small> <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'> Lutemi krijoni një manualisht më parë. </a> </small>",
             "nodeSyncing": "Nyja e Ethereumit ka nevojë të sinkronizohet, lutemi prisni...",
             "nodeSyncInfo": "Duke marrë bllokun __currentBlock__ of __highestBlock__.",

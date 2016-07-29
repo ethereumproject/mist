@@ -95,7 +95,7 @@
             "runningNodeFound": "Trovato nodo Ethereum in esecuzione!",
             "startingNode": "Avvio nodo Ethereum ...",
             "startedNode": "Avvio applicazione...",
-            "nodeConnectionTimeout": "Impossibile avviare un nodo Ethereum!<br><small>Se <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>hai installato Geth</a>, usa questo comando per eseguirlo:<br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereum/mist/issues' class='button' target='_blank'> o riporta il problema </a></small>",
+            "nodeConnectionTimeout": "Impossibile avviare un nodo Ethereum!<br><small>Se <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>hai installato Geth</a>, usa questo comando per eseguirlo:<br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereumproject/mist/issues' class='button' target='_blank'> o riporta il problema </a></small>",
             "nodeBinaryNotFound": "Impossibile trovare l'eseguibile del nodo Ethereum !<br><small> <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'> Per favore avvialo manualmente prima. </a> </small>",
             "nodeSyncing": "Il nodo Ethereum deve sincronizzarsi, attendere prego...",
             "nodeSyncInfo": "Scaricamento blocco __displayBlock__ di __highestBlock__.",

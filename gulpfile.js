@@ -38,15 +38,16 @@ else
 var type = 'mist';
 var filenameLowercase = 'mist';
 var filenameUppercase = 'Mist';
-var applicationName = 'Mist'; 
+var applicationName = 'Mist';
 var electronVersion = '1.2.5';
 var gethVersion = '1.4.10';
+// !EPROJECT Need to build i386 binaries for windows and linux and update the binaries
 var nodeUrls = {
-    'darwin-x64': 'https://github.com/ethereum/go-ethereum/releases/download/v1.4.10/geth-OSX-20160716155225-1.4.10-5f55d95.zip',
-    'linux-x64': 'https://github.com/ethereum/go-ethereum/releases/download/v1.4.10/geth-Linux64-20160716160600-1.4.10-5f55d95.tar.bz2',
-    'win32-x64': 'https://github.com/ethereum/go-ethereum/releases/download/v1.4.10/Geth-Win64-20160716155900-1.4.10-5f55d95.zip',
-    'linux-ia32': 'https://bintray.com/karalabe/ethereum/download_file?file_path=geth-1.4.10-stable-5f55d95-linux-386.tar.bz2',
-    'win32-ia32': 'https://bintray.com/karalabe/ethereum/download_file?file_path=geth-1.4.10-stable-5f55d95-windows-4.0-386.exe.zip'
+    'darwin-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/v1.4.10/geth-OSX-20160716155225-1.4.10-5f55d95.zip',
+    'linux-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/v1.4.10/geth-Linux64-20160716160600-1.4.10-5f55d95.tar.bz2',
+    'win32-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/v1.4.10/Geth-Win64-20160716155900-1.4.10-5f55d95.zip'
+    //'linux-ia32': 'https://bintray.com/karalabe/ethereum/download_file?file_path=geth-1.4.10-stable-5f55d95-linux-386.tar.bz2',
+    //'win32-ia32': 'https://bintray.com/karalabe/ethereum/download_file?file_path=geth-1.4.10-stable-5f55d95-windows-4.0-386.exe.zip'
 };
 
 var osVersions = [];
@@ -141,8 +142,6 @@ gulp.task('downloadNodes', ['clean:nodes'], function(done) {
         //var destPath = (os === 'darwin-x64')
           //  ? path +'/'+ filenameUppercase +'.app/Contents/Frameworks/node'
             //: path +'/resources/node';
-
-            
         // donwload nodes
         if (os.indexOf(options.platform) !== -1)
             streams.push(download(nodeUrl)

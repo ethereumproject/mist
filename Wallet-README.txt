@@ -1,6 +1,6 @@
-Ethereum Wallet
+Ethereum Classic Wallet
 
-The Ethereum wallet, which allows you to create simple and multisig wallets to manage your ether.
+The Ethereum classic wallet, which allows you to create simple and multisig wallets to manage your ether.
 
 The wallet contains its own node, but can also use an already running one, if the IPC path of that node is the standard path.
 (See below)
@@ -45,22 +45,22 @@ The nodes data is stored at:
 
 ## Issues
 
-If you find issues or have suggestion, please report them at  
+If you find issues or have suggestion, please report them at
 https://github.com/ethereum/meteor-dapp-wallet/issues
 
 
 
 ## Repository
 
-The wallet code can be found at   
+The wallet code can be found at
 https://github.com/ethereum/meteor-dapp-wallet
 
-And the binary application code, which wraps the wallet app can be found at   
+And the binary application code, which wraps the wallet app can be found at
 https://github.com/ethereum/mist/tree/wallet
 
 
 
 ## Bundling the wallet
 
-To bundle the binaries yourself follow the instructions on the mist#wallet readme  
+To bundle the binaries yourself follow the instructions on the mist#wallet readme
 https://github.com/ethereum/mist/tree/wallet#deployment

@@ -93,7 +93,7 @@
             "runningNodeFound": "走っているEthereum nodeを見つけました!",
             "startingNode": "Ethereum ノードを開始しています。",
             "startedNode": "アプリケーションを開始しています...",
-            "nodeConnectionTimeout": "Ethereum nodeをスタート出来ませんでした!<br><small>もし<a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>Geth</a>をインストールしているならば,このコマンドを使ってみてください: <br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereum/mist/issues' class='button' target='_blank'>もしくは問題を報告して下さい。 </a></small>",
+            "nodeConnectionTimeout": "Ethereum nodeをスタート出来ませんでした!<br><small>もし<a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>Geth</a>をインストールしているならば,このコマンドを使ってみてください: <br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereumproject/mist/issues' class='button' target='_blank'>もしくは問題を報告して下さい。 </a></small>",
             "nodeBinaryNotFound": "Ethereum node バイナリーが見つかりませんでした。<br><small> <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'> 手動でスタートして下さい。 </a> </small>",
             "nodeSyncing": "Ethereum node は同期中です...",
             "nodeSyncInfo": "blockをダウンロードしています。 __displayBlock__ of __highestBlock__.",

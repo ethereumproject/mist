@@ -4,7 +4,7 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ethereum/mist.git"
+    "url": "https://github.com/ethereumproject/mist.git"
   },
   "scripts": {
     "ci": "gulp --platform=linux"

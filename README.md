@@ -1,8 +1,8 @@
 # Mist Browser
 
-[![Join the chat at https://gitter.im/ethereum/mist](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ethereum/mist?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build status master branch ](https://build.ethdev.com/buildstatusimage?builder=Mist%20master%20branch)](https://build.ethdev.com/builders/Mist%20master%20branch/builds/-1)
-[![Build status develop branch ](https://build.ethdev.com/buildstatusimage?builder=Mist%20develop%20branch)](https://build.ethdev.com/builders/Mist%20develop%20branch/builds/-1)
+[![Join the chat at https://gitter.im/ethereumproject/mist](https://badges.gitter.im/Join%20Chat.svg)](#TBD)
+[![Build status master branch ](https://build.ethdev.com/buildstatusimage?builder=Mist%20master%20branch)](#TBD)
+[![Build status develop branch ](https://build.ethdev.com/buildstatusimage?builder=Mist%20develop%20branch)](#TBD)
 
 The Mist browser is the tool of choice to browse and use Ðapps.
 
@@ -10,7 +10,7 @@ For the Mist API see the [MISTAPI.md](MISTAPI.md).
 
 ## Installation
 
-If you want install the app from a pre-built version on the [release page](https://github.com/ethereum/mist/releases),
+If you want install the app from a pre-built version on the [release page](https://github.com/ethereumproject/mist/releases),
 you can simply run the executeable after download.
 
 For updating simply download the new version and copy it over the old one (keep a backup of the old one if you want to be sure).
@@ -28,7 +28,7 @@ Once a Mist version is released the Meteor frontend part is bundled using `meteo
 
 ### Dependencies
 
-Requirements: 
+Requirements:
 
 * Electron v1.2.5
 * Node v4.3.0 or above
@@ -88,27 +88,27 @@ In the original window you can then start Mist using wallet mode:
 
 ### Passing options to Geth/Eth
 
-You can pass command-line options directly to Geth/Eth by prefixing them 
+You can pass command-line options directly to Geth/Eth by prefixing them
 with `--node-`:
 
 ```bash
-$ electron . --mode mist --node-rpcport 19343 --node-networkid 2 
+$ electron . --mode mist --node-rpcport 19343 --node-networkid 2
 ```
 
 
 ### Using Mist with a privatenet
 
-To run a private network you will need to set the `networkdid`, `ipcpath` and 
+To run a private network you will need to set the `networkdid`, `ipcpath` and
 `datadir` flags:
 
 ```bash
 $ electron . --ipcpath ~/Library/Ethereum/geth.ipc --node-networkid 1234  --node-datadir ~/Library/Ethereum/privatenet
 ```
 
-_NOTE: since `ipcpath` is also a Mist option you do not need to also include a 
+_NOTE: since `ipcpath` is also a Mist option you do not need to also include a
 `--node-ipcpath` option._
 
-You can also run `geth` separately yourself with the same options prior to start 
+You can also run `geth` separately yourself with the same options prior to start
 Mist normally.
 
 

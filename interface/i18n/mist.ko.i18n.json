@@ -95,7 +95,7 @@
             "runningNodeFound": "작동 중인 이더리움 노드를 발견!",
             "startingNode": "이더리움 노드 시작...",
             "startedNode": "어플리케이션 시작...",
-            "nodeConnectionTimeout": "이더리움 노드를 시작할 수 없었습니다! <br><small>만일<a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>Geth</a> 를 인스톨 했다면, 다음의 명령어를 사용해 실행하세요: <br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereum/mist/issues' class='button' target='_blank'> 또는 이슈를 리포트하세요 </a></small>",
+            "nodeConnectionTimeout": "이더리움 노드를 시작할 수 없었습니다! <br><small>만일<a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'>Geth</a> 를 인스톨 했다면, 다음의 명령어를 사용해 실행하세요: <br> <code>geth --ipcpath __path__</code></small><br> <small><a href='https://github.com/ethereumproject/mist/issues' class='button' target='_blank'> 또는 이슈를 리포트하세요 </a></small>",
             "nodeBinaryNotFound": "이더리움 노드 실행파일이 없습니다!<br><small> <a href='https://www.ethereum.org/cli#geth' class='button' target='_blank'> 수동으로 이를 먼저 실행하세요.</a> </small>",
             "nodeSyncing": "이더리움 노드에 동기화가 필요합니다, 기다려 주세요...",
             "nodeSyncInfo": "현재 highestBlock__ 중 __currentBlcok 을 다운로드중",

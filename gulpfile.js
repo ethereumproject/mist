@@ -43,11 +43,11 @@ var electronVersion = '1.2.5';
 var gethVersion = '1.4.10';
 // !EPROJECT Need to build i386 binaries for windows and linux and update the binaries
 var nodeUrls = {
-    'darwin-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/v1.4.10/geth-OSX-20160716155225-1.4.10-5f55d95.zip',
-    'linux-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/v1.4.10/geth-Linux64-20160716160600-1.4.10-5f55d95.tar.bz2',
-    'win32-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/v1.4.10/Geth-Win64-20160716155900-1.4.10-5f55d95.zip'
-    //'linux-ia32': 'https://bintray.com/karalabe/ethereum/download_file?file_path=geth-1.4.10-stable-5f55d95-linux-386.tar.bz2',
-    //'win32-ia32': 'https://bintray.com/karalabe/ethereum/download_file?file_path=geth-1.4.10-stable-5f55d95-windows-4.0-386.exe.zip'
+    'darwin-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-OSX-20160727-1.4.10-6aaf5f3.zip',
+    'linux-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux64-20160727-1.4.10-6aaf5f3.tar.gz',
+    'win32-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win64-20160727-1.4.10-6aaf5f3.zip'
+    'linux-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux386-20160731-1.4.10-6aaf5f3.tar.gz',
+    'win32-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win386-20160731-1.4.10-6aaf5f3.tar.gz'
 };
 
 var osVersions = [];
@@ -207,7 +207,7 @@ gulp.task('renameNodesDeleteOld', ['renameNodes'], function (cb) {
 
 var updatedNeeded = true;
 gulp.task('checkNodes', function() {
-    return gulp.src('./nodes/geth/*.{zip,tar.bz2}')
+    return gulp.src('./nodes/geth/*.{zip,tar.bz2,tar.gz}')
     .pipe(tap(function(file, t) {
         if(!!~file.path.indexOf('-'+ gethVersion +'-')) {
             updatedNeeded = false;
@@ -217,7 +217,7 @@ gulp.task('checkNodes', function() {
 });
 
 
-// BUNLDE PROCESS
+// BUNDLE PROCESS
 
 gulp.task('copy-files', ['checkNodes', 'clean:dist'], function() {
 
@@ -257,31 +257,26 @@ gulp.task('bundling-interface', ['clean:dist', 'copy-files'], function(cb) {
         exec('cd interface && meteor-build-client ../dist_'+ type +'/app/interface -p ""', function (err, stdout, stderr) {
             // console.log(stdout);
             console.log(stderr);
-
             cb(err);
         });
     }
 
     if(type === 'wallet') {
         // TODO move mist interface too
-
         if(options.walletSource === 'local') {
             console.log('Use local wallet at ../meteor-dapp-wallet/app');
             exec('cd interface/ && meteor-build-client ../dist_'+ type +'/app/interface/ -p "" &&'+
                  'cd ../../meteor-dapp-wallet/app && meteor-build-client ../../mist/dist_'+ type +'/app/interface/wallet -p ""', function (err, stdout, stderr) {
                 console.log(stdout);
                 console.log(stderr);
-
                 cb(err);
             });
-
         } else {
             console.log('Pulling https://github.com/ethereum/meteor-dapp-wallet/tree/'+ options.walletSource +' "'+ options.walletSource +'" branch...');
             exec('cd interface/ && meteor-build-client ../dist_'+ type +'/app/interface/ -p "" &&'+
                  'cd ../dist_'+ type +'/ && git clone --depth 1 https://github.com/ethereum/meteor-dapp-wallet.git && cd meteor-dapp-wallet/app && meteor-build-client ../../app/interface/wallet -p "" && cd ../../ && rm -rf meteor-dapp-wallet', function (err, stdout, stderr) {
                 console.log(stdout);
                 console.log(stderr);
-
                 cb(err);
             });
         }
@@ -328,7 +323,7 @@ gulp.task('create-binaries', ['copy-i18n'], function(cb) {
             // FileDescription
             // OriginalFilename
             ProductName: applicationName
-            // InternalName: 
+            // InternalName:
         }
     }, function(){
         setTimeout(function(){
@@ -358,7 +353,6 @@ gulp.task('change-files', ['create-binaries'], function() {
             ])
             .pipe(gulp.dest(path +'/')));
 
-
         // copy authors file
         streams.push(gulp.src([
             './AUTHORS'
@@ -378,8 +372,6 @@ gulp.task('change-files', ['create-binaries'], function() {
             ? path +'/'+ filenameUppercase +'.app/Contents/Frameworks/node'
             : path +'/resources/node';
 
-
-
         // copy eth node binaries
         streams.push(gulp.src([
             './nodes/eth/'+ os + '/*'
@@ -391,9 +383,7 @@ gulp.task('change-files', ['create-binaries'], function() {
             './nodes/geth/'+ os + '/*'
             ])
             .pipe(gulp.dest(destPath +'/geth')));
-
     });
-
 
     return merge.apply(null, streams);
 });
@@ -427,12 +417,10 @@ gulp.task('rename-folders', ['change-files'], function(done) {
             });
         }
 
-
         //var zip5 = new EasyZip();
         //zip5.zipFolder(path, function(){
-        //    zip5.writeToFile(path +'.zip'); 
+        //    zip5.writeToFile(path +'.zip');
         //});
-
 
         count++;
 
@@ -481,7 +469,6 @@ gulp.task('getChecksums', [], function(done) {
         sha.stdout.on('data', function(data){
             console.log('SHA256 '+ fileName +': '+ data.toString().replace(path, ''));
         });
-
 
         count++;
         if(osVersions.length === count) {
@@ -533,8 +520,6 @@ gulp.task('wallet-checksums', [
     'getChecksums'
 ]);
 
-
-
 gulp.task('test-wallet', function() {
     return gulp.src([
         './test/wallet/*.test.js'
@@ -546,7 +531,4 @@ gulp.task('test-wallet', function() {
     }));
 });
 
-
-
 gulp.task('default', ['mist']);
-

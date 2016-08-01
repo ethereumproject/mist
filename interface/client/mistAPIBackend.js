@@ -2,8 +2,6 @@
 @module MistAPI Backend
 */
 
-
-
 /**
 Filters a id the id to only contain a-z A-Z 0-9 _ -.
 
@@ -18,7 +16,6 @@ var filterId = function(str) {
     return newStr;
 };
 
-
 var sound = document.createElement('audio');
 
 /**
@@ -30,9 +27,7 @@ mistAPIBackend = function(event) {
     var template = this.template;
     var webview = this.webview;
     var arg = event.args[0];
-
     // console.trace('mistAPIBackend event', event);
-
     if(event.channel === 'setWebviewId') {
         Tabs.update(template.data._id, {$set:{
             webviewId: webview.getId()
@@ -68,7 +63,6 @@ mistAPIBackend = function(event) {
         return;
 
     // Actions: --------
-
     if(event.channel === 'mistAPI_setBadge') {
         Tabs.update(template.data._id, {$set:{
             badge: arg
@@ -77,12 +71,10 @@ mistAPIBackend = function(event) {
 
     if(event.channel === 'mistAPI_menuChanges' && arg instanceof Array) {
         arg.forEach(function(arg){
-
             if(arg.action === 'addMenu') {
                 // filter ID
                 if(arg.entry && arg.entry.id)
                     arg.entry.id = filterId(arg.entry.id);
-                
                 var query = {'$set': {}};
 
                 if(arg.entry.id)
@@ -102,9 +94,7 @@ mistAPIBackend = function(event) {
 
             if(arg.action === 'removeMenu') {
                 var query = {'$unset': {}};
-
                 query['$unset']['menu.'+ arg.id] = '';
-
                 Tabs.update(template.data._id, query);
             }
 

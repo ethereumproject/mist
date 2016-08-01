@@ -205,24 +205,25 @@ gulp.task('renameNodesDeleteOld', ['renameNodes'], function (cb) {
 
 // CHECK FOR NODES
 
-var updatedNeeded = true;
+
+// !EPROJECT Changed this because the below function is not currently functional
+var updateNeeded = false;
+// !EPROJECT This does not match the current structure
 gulp.task('checkNodes', function() {
-    return gulp.src('./nodes/geth/*.{zip,tar.bz2,tar.gz}')
+    return gulp.src('./nodes/geth/*.{zip,tar.bz2}')
     .pipe(tap(function(file, t) {
         if(!!~file.path.indexOf('-'+ gethVersion +'-')) {
-            updatedNeeded = false;
+            updateNeeded = false;
         }
     }))
     .pipe(gulp.dest('./nodes/geth/'));
 });
 
-
 // BUNDLE PROCESS
 
 gulp.task('copy-files', ['checkNodes', 'clean:dist'], function() {
-
     // check if nodes are there
-    if(updatedNeeded){
+    if(updateNeeded){
         console.error('YOUR NODES NEED TO BE UPDATED run $ gulp update-nodes');
         throw new Error('YOUR NODES NEED TO BE UPDATED run $ gulp update-nodes');
     }

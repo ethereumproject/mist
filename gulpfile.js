@@ -44,10 +44,10 @@ var gethVersion = '1.4.10';
 // !EPROJECT Need to build i386 binaries for windows and linux and update the binaries
 var nodeUrls = {
     'darwin-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-OSX-20160727-1.4.10-6aaf5f3.zip',
-    'linux-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux64-20160727-1.4.10-6aaf5f3.tar.gz',
+    'linux-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux64-20160801-1.4.10-6aaf5f3.tar.bz2',
     'win32-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win64-20160727-1.4.10-6aaf5f3.zip'
-    'linux-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux386-20160731-1.4.10-6aaf5f3.tar.gz',
-    'win32-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win386-20160731-1.4.10-6aaf5f3.tar.gz'
+    'linux-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux386-20160801-1.4.10-6aaf5f3.tar.bz2',
+    'win32-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win386-20160801-1.4.10-6aaf5f3.zip'
 };
 
 var osVersions = [];

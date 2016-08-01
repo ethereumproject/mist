@@ -4,7 +4,7 @@
 [![Build status master branch ](https://build.ethdev.com/buildstatusimage?builder=Mist%20master%20branch)](#TBD)
 [![Build status develop branch ](https://build.ethdev.com/buildstatusimage?builder=Mist%20develop%20branch)](#TBD)
 
-The Mist browser is the tool of choice to browse and use Ðapps.
+The Mist(classic) browser is the tool of choice to browse and use Ðapps.
 
 For the Mist API see the [MISTAPI.md](MISTAPI.md).
 
@@ -43,7 +43,7 @@ To run mist in development you need [Node.js NPM](https://nodejs.org) and [Meteo
 
 Now you're ready to install Mist:
 
-    $ git clone https://github.com/ethereum/mist.git
+    $ git clone https://github.com/ethereumproject/mist.git
     $ cd mist
     $ git submodule update --init
     $ npm install
@@ -130,7 +130,7 @@ To generate the binaries simply run:
     // to generate mist
     $ gulp mist
 
-    // Or to generate the wallet (using the https://github.com/ethereum/meteor-dapp-wallet -> master)
+    // Or to generate the wallet (using the https://github.com/ethereumproject/meteor-dapp-wallet -> master)
     $ gulp wallet
 
 This will generate the binaries inside the `dist_mist` or `dist_wallet` folder.

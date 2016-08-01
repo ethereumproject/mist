@@ -320,23 +320,6 @@ var onReady = function() {
                 // update menu, to show node switching possibilities
                 appMenu();
             })
-            // FORK RELATED
-            .then(function hardForkOption() {
-                // open the fork popup
-                if (ethereumNode.isMainNetwork && !ethereumNode.daoFork) {
-
-                    return new Q((resolve, reject) => {
-                        var forkChoiceWindow = Windows.createPopup('forkChoice', {
-                            primary: true,
-                            electronOptions: {
-                                width: 640,
-                                height: 580,
-                            },
-                        });
-
-                    });
-                }
-            })
             .then(function getAccounts() {
                 return ethereumNode.send('eth_accounts', []);
             })

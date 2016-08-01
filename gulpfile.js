@@ -100,8 +100,6 @@ var createNewFileName = function(os) {
     return './dist_'+ type +'/'+ filenameUppercase +'-'+ newOs + '-'+ version.replace(/\./g,'-');
 };
 
-
-
 /// --------------------------------------------------------------
 
 // TASKS
@@ -117,7 +115,6 @@ gulp.task('set-variables-wallet', function () {
     filenameUppercase = 'Ethereum-Wallet';
     applicationName = 'Ethereum Wallet';
 });
-
 
 gulp.task('clean:dist', function (cb) {
   return del([

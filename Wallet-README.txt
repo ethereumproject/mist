@@ -46,21 +46,21 @@ The nodes data is stored at:
 ## Issues
 
 If you find issues or have suggestion, please report them at
-https://github.com/ethereum/meteor-dapp-wallet/issues
+https://github.com/ethereumproject/meteor-dapp-wallet/issues
 
 
 
 ## Repository
 
 The wallet code can be found at
-https://github.com/ethereum/meteor-dapp-wallet
+https://github.com/ethereumproject/meteor-dapp-wallet
 
 And the binary application code, which wraps the wallet app can be found at
-https://github.com/ethereum/mist/tree/wallet
+https://github.com/ethereumproject/mist/tree/wallet
 
 
 
 ## Bundling the wallet
 
 To bundle the binaries yourself follow the instructions on the mist#wallet readme
-https://github.com/ethereum/mist/tree/wallet#deployment
+https://github.com/ethereumproject/mist/tree/wallet#deployment

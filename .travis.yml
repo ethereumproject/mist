@@ -23,5 +23,5 @@ script:
 
 notifications:
   email:
-    - mist@ethereum.org
+    - mist@ethereumclassic.org
 

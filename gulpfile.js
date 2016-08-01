@@ -266,7 +266,7 @@ gulp.task('bundling-interface', ['clean:dist', 'copy-files'], function(cb) {
         // TODO move mist interface too
         if(options.walletSource === 'local') {
             console.log('Use local wallet at ../meteor-dapp-wallet/app');
-            exec('cd interface/ && meteor-build-client ../dist_'+ type +'/app/interface/ -p "" &&'+
+            exec('cd interface/ && meteor-build-client ../dist_'+ type +'/app/interface/ -p "" && '+
                  'cd ../../meteor-dapp-wallet/app && meteor-build-client ../../mist/dist_'+ type +'/app/interface/wallet -p ""', function (err, stdout, stderr) {
                 console.log(stdout);
                 console.log(stderr);

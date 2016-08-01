@@ -235,7 +235,7 @@
                     "wrongPassword": "Wrong password.",
                     "importFailed": "Couldn't import the file, got: __error__"
                 }
-            },
+            }
         }
     },
     "elements": {

@@ -282,7 +282,6 @@ var onReady = function() {
             );
         });
 
-
         // capture sync results
         const syncResultPromise = new Q((resolve, reject) => {
             nodeSync.on('nodeSyncing', function(result) {
@@ -345,9 +344,7 @@ var onReady = function() {
                         ipc.on('onBoarding_changeNet', function(e, testnet) {
                             let newType = ethereumNode.type;
                             let newNetwork = testnet ? 'test' : 'main';
-
                             log.debug('Onboarding change network', newNetwork);
-                            
                             ethereumNode.restart(newType, newNetwork)
                                 .then(function nodeRestarted() {
                                     appMenu();
@@ -358,16 +355,13 @@ var onReady = function() {
                                     reject(err);
                                 });
                         });
-
                         // launch app
                         ipc.on('onBoarding_launchApp', function(e) {
                             // prevent that it closes the app
                             onboardingWindow.removeAllListeners('close');
                             onboardingWindow.close();
-
                             ipc.removeAllListeners('onBoarding_changeNet');
                             ipc.removeAllListeners('onBoarding_launchApp');
-
                             resolve();
                         });
 
@@ -382,7 +376,6 @@ var onReady = function() {
                 if (splashWindow) {
                     splashWindow.show();
                 }
-
                 if (!Settings.inAutoTestMode) {
                     return syncResultPromise;
                 }
@@ -404,8 +397,6 @@ var onReady = function() {
 
 }; /* onReady() */
 
-
-
 /**
 Start the main window and all its processes
 
@@ -413,12 +404,10 @@ Start the main window and all its processes
 */
 var startMainWindow = function() {
     log.info('Loading Interface at '+ global.interfaceAppUrl);
-
     mainWindow.on('ready', function() {
         if (splashWindow) {
             splashWindow.close();
         }
-
         mainWindow.show();
     });
 
@@ -434,19 +423,14 @@ var startMainWindow = function() {
 
     let sortedTabs = Tabs.addDynamicView('sorted_tabs');
     sortedTabs.applySimpleSort('position', false);
-
     let refreshMenu = function() {
         clearTimeout(global._refreshMenuFromTabsTimer);
-
         global._refreshMenuFromTabsTimer = setTimeout(function() {
             log.debug('Refresh menu with tabs');
-
             global.webviews = sortedTabs.data();
-
-            appMenu(global.webviews);            
+            appMenu(global.webviews);
         }, 200);
     };
-
     Tabs.on('insert', refreshMenu);
     Tabs.on('update', refreshMenu);
     Tabs.on('delete', refreshMenu);

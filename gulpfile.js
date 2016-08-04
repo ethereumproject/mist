@@ -27,12 +27,10 @@ var options = minimist(process.argv.slice(2), {
     }
 });
 
-
 if(options.platform.indexOf(',') !== -1)
     options.platform = options.platform.replace(/ +/g,'').split(',');
 else
     options.platform = options.platform.split(' ');
-
 
 // CONFIG
 var type = 'mist';
@@ -44,8 +42,8 @@ var gethVersion = '1.4.10';
 // !EPROJECT Need to build i386 binaries for windows and linux and update the binaries
 var nodeUrls = {
     'darwin-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-OSX-20160727-1.4.10-6aaf5f3.zip',
-    'linux-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux64-20160801-1.4.10-6aaf5f3.tar.bz2',
-    'win32-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win64-20160727-1.4.10-6aaf5f3.zip',
+    'linux-x64':  'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux64-20160801-1.4.10-6aaf5f3.tar.bz2',
+    'win32-x64':  'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win64-20160727-1.4.10-6aaf5f3.zip',
     'linux-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux386-20160801-1.4.10-6aaf5f3.tar.bz2',
     'win32-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win386-20160801-1.4.10-6aaf5f3.zip'
 };
@@ -202,7 +200,6 @@ gulp.task('renameNodesDeleteOld', ['renameNodes'], function (cb) {
 
 // CHECK FOR NODES
 
-
 // !EPROJECT Changed this because the below function is not currently functional
 var updateNeeded = false;
 // !EPROJECT This does not match the current structure
@@ -253,7 +250,7 @@ gulp.task('switch-production', ['clean:dist', 'copy-files'], function(cb) {
 gulp.task('bundling-interface', ['clean:dist', 'copy-files'], function(cb) {
     if(type === 'mist') {
         exec('cd interface && meteor-build-client ../dist_'+ type +'/app/interface -p ""', function (err, stdout, stderr) {
-            // console.log(stdout);
+            console.log(stdout);
             console.log(stderr);
             cb(err);
         });
@@ -272,7 +269,8 @@ gulp.task('bundling-interface', ['clean:dist', 'copy-files'], function(cb) {
         } else {
             console.log('Pulling https://github.com/ethereumproject/meteor-dapp-wallet/tree/'+ options.walletSource +' "'+ options.walletSource +'" branch...');
             exec('cd interface/ && meteor-build-client ../dist_'+ type +'/app/interface/ -p "" &&'+
-                 'cd ../dist_'+ type +'/ && git clone --depth 1 https://github.com/ethereumproject/meteor-dapp-wallet.git && cd meteor-dapp-wallet/app && meteor-build-client ../../app/interface/wallet -p "" && cd ../../ && rm -rf meteor-dapp-wallet', function (err, stdout, stderr) {
+                 //'cd ../dist_'+ type +'/ && git clone --depth 1 https://github.com/ethereumproject/meteor-dapp-wallet.git && cd meteor-dapp-wallet/app && meteor-build-client ../../app/interface/wallet -p "" && cd ../../ && rm -rf meteor-dapp-wallet', function (err, stdout, stderr) {
+                 'cd ../dist_'+ type +'/ && git clone --depth 1 https://github.com/ethereumproject/meteor-dapp-wallet.git && cd meteor-dapp-wallet/app && meteor-build-client ../../app/interface/wallet -p "" && cd ../../', function (err, stdout, stderr) {
                 console.log(stdout);
                 console.log(stderr);
                 cb(err);

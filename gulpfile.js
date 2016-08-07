@@ -302,6 +302,7 @@ gulp.task('create-binaries', ['copy-i18n'], function(cb) {
         version: electronVersion,
         'app-version': version,
         'build-version': electronVersion,
+        // !EPROJECT Need to update mac developer key
         // DO AFTER: codesign --deep --force --verbose --sign "5F515C07CEB5A1EC3EEB39C100C06A8C5ACAE5F4" Ethereum-Wallet.app
         //'sign': '3rd Party Mac Developer Application: Stiftung Ethereum (3W6577R383)',
         'app-bundle-id': 'com.ethereum.'+ type,
@@ -370,9 +371,9 @@ gulp.task('change-files', ['create-binaries'], function() {
 
         // copy eth node binaries
         streams.push(gulp.src([
-            './nodes/eth/'+ os + '/*'
+            './nodes/geth/'+ os + '/*'
             ])
-            .pipe(gulp.dest(destPath +'/eth')));
+            .pipe(gulp.dest(destPath +'/geth')));
 
         // copy geth node binaries
         streams.push(gulp.src([

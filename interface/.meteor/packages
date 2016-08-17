@@ -35,9 +35,9 @@ spacebars
 check
 standard-minifier-css
 standard-minifier-js
-etc:blocks
-etc:elements
-etc:web3
-etc:accounts
-etc:tools
-etc:dapp-styles
+ethereumclassic:blocks
+ethereumclassic:web3
+ethereumclassic:dapp-styles
+ethereumclassic:elements
+ethereumclassic:tools
+ethereumclassic:accounts

@@ -10,7 +10,7 @@ For the Mist API see the [MISTAPI.md](MISTAPI.md).
 
 ## Installation
 
-If you want install the app from a pre-built version on the [release page](https://github.com/ethereum/mist/releases),
+If you want install the app from a pre-built version on the [release page](https://github.com/ProphetDaniel/mist/releases),
 you can simply run the executeable after download.
 
 For updating simply download the new version and copy it over the old one (keep a backup of the old one if you want to be sure).

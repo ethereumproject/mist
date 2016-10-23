@@ -219,3 +219,5 @@ It expects installer/zip files to be in the generated folders e.g. `dist_wallet/
 ### Code signing for production
 
 **As of #972 we've updated the build process and thus need to redo code-signing.**
+
+PS

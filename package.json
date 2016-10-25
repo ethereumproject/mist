@@ -1,6 +1,6 @@
 {
   "name": "Mist",
-  "version": "0.8.6",
+  "version": "0.8.d",
   "license": "GPL-3.0",
   "author": "Ethereum Mist Team <avsa@ethereum.org>",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/ethereum/mist.git"
   },
   "scripts": {
-    "ci": "gulp --platform=all"
+    "ci": "gulp"
   },
   "main": "main.js",
   "dependencies": {

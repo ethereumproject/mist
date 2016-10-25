@@ -1,29 +1,38 @@
 sudo: required
 dist: trusty
-
 language: node_js
-
 branches:
   only:
-    - develop
-
+  - develop
 node_js:
-  - "4"
-
+- '4'
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y icnsutils graphicsmagick xz-utils
-
+- sudo apt-get -qq update
+- sudo apt-get install -y icnsutils graphicsmagick xz-utils
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - "sleep 3" # give xvfb some time to start
-  - "curl https://install.meteor.com/ | sh"
-  - "npm install -g meteor-build-client"
-
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
+- curl https://install.meteor.com/ | sh
+- npm install -g meteor-build-client
 script:
-  - "npm run ci"
-
+- npm run ci
 notifications:
   email:
-    - EMAIL
+  - EMAIL
+deploy:
+  provider: releases
+  api_key:
+    secure: JOwjiCt14J+mvUvWHsQpbeNHPydG4VVNKe/lQL2Y/9kNEqIcjw/hwWyx+CTGaJUuQRSAJuek1GpWuyrmXeT95mORw5kVP+6jXbnwVPXVTBp3ySKGvVfQqRW/k93NVsyDuxWFWmVfdHD800lIswzLJmYjZQ3S6fSztekFTDMTFdj8jRbVIm0viCGAs5Zzg6vrKIsnY6ZkMgx8+TO3t3S2A+ywU8lvilUz4gHOX9iS2KQZu3i8hZNP/mu+F6xtN0WcDjJt4eAeqoL09QXaWKy6sdPc03y8/0Fs4viQ904OtFEhZZhjZtBsOfMboP+i4M6F5hU6DT3OjYgTP2Jn+QFrrMxQM2onXcGPqkZb0tUOSN4QDYp0L02GxAmoaGKYJHLjVKZGXP+DdZLkYNMHrVWGAayhJ1hFDHiQp6kQFjrYmEd2HDTmJ4N89dkQdQkmga2F5Z7NfJqVUHLac4bVojTAp4GFpmmTIa429FyJAKSa+GMzSpoTIceQbs8B3O0tjGLSHkL/+7gkGbsXx6crrvXAMmJNIi2rHtoZKpaq7pu3nIycoUybV55H96D8/Z4zXCOz627unvgN3uaFtreJT8p3gZgEcZ7zg4tQ5Z75j4neyqN/Y6OawPMSAyCxjaJYHtNw1KVQSHyaODkfVmlkUFtAzXd0cUijVjrglSJDZUM/xIs=
+  file:
+    - "dist_mist/release/Mist-linux32-*.deb"
+    - "dist_mist/release/Mist-linux32-*.zip" 
+    - "dist_mist/release/Mist-linux64-*.deb"
+    - "dist_mist/release/Mist-linux64-*.zip"
+    - "dist_mist/release/Mist-macosx-*.dmg" 
+    - "dist_mist/release/Mist-win32-*.exe" 
+    - "dist_mist/release/Mist-win64-*.exe"   
+  on:
+    repo: ProphetDaniel/mist
+    branch: develop
+    tags: true

@@ -11,10 +11,7 @@ var download = require('gulp-download-stream');
 var decompress = require('gulp-decompress');
 var tap = require("gulp-tap");
 const mocha = require('gulp-spawn-mocha');
-// const zip = require('gulp-zip');
-// var zip = require('gulp-zip');
-// var zip = require('gulp-jszip');
-// var EasyZip = require('easy-zip').EasyZip;
+const zip = require('gulp-zip');
 var minimist = require('minimist');
 var fs = require('fs');
 var rcedit = require('rcedit');
@@ -41,11 +38,9 @@ var electronVersion = '1.2.5';
 var gethVersion = '1.4.10';
 // !EPROJECT Need to build i386 binaries for windows and linux and update the binaries
 var nodeUrls = {
-    'darwin-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-OSX-20160727-1.4.10-6aaf5f3.zip',
-    'linux-x64':  'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux64-20160801-1.4.10-6aaf5f3.tar.bz2',
-    'win32-x64':  'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win64-20160727-1.4.10-6aaf5f3.zip',
-    'linux-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Linux386-20160801-1.4.10-6aaf5f3.tar.bz2',
-    'win32-ia32': 'https://github.com/ethereumproject/go-ethereum/releases/download/6aaf5f3/geth-Win386-20160801-1.4.10-6aaf5f3.zip'
+    'darwin-x64': 'https://github.com/ethereumproject/go-ethereum/releases/download/v3.0.1/geth-classic-darwin-65f1fbc.zip',
+    'linux-x64':  'https://github.com/ethereumproject/go-ethereum/releases/download/v3.0.1/geth-classic-linux-x64-65f1fbc.1.zip',
+    'win32-x64':  'https://github.com/ethereumproject/go-ethereum/releases/download/v3.0.1/geth-classic-win64-65f1fbc.zip'
 };
 
 var osVersions = [];
@@ -58,26 +53,22 @@ console.log('Mist version:', version);
 console.log('Electron version:', electronVersion);
 
 if(_.contains(options.platform, 'win32')) {
-    osVersions.push('win32-ia32');
     osVersions.push('win32-x64');
 }
 
 if(_.contains(options.platform, 'linux')) {
-    osVersions.push('linux-ia32');
     osVersions.push('linux-x64');
 }
 
 if(_.contains(options.platform, 'darwin')) {
     osVersions.push('darwin-x64');
+    osVersions.push('macosx');
 }
 
 if(_.contains(options.platform, 'all')) {
     osVersions = [
         'darwin-x64',
-        // 'linux-arm',
-        'linux-ia32',
         'linux-x64',
-        'win32-ia32',
         'win32-x64'
     ];
 }
@@ -138,7 +129,7 @@ gulp.task('downloadNodes', ['clean:nodes'], function(done) {
           //  ? path +'/'+ filenameUppercase +'.app/Contents/Frameworks/node'
             //: path +'/resources/node';
         // donwload nodes
-        if (os.indexOf(options.platform) !== -1)
+        if (os.indexOf(options.platform) !== -1 || options.platform.indexOf('all') !== 1)
             streams.push(download(nodeUrl)
                 .pipe(gulp.dest('./nodes/geth/')));
 
@@ -429,21 +420,16 @@ gulp.task('rename-folders', ['change-files'], function(done) {
 });
 
 
-gulp.task('zip', ['rename-folders'], function () {
+gulp.task('zip', function () {
     var streams = osVersions.map(function(os){
         var stream,
             name = filenameUppercase +'-'+ os +'-'+ version.replace(/\./g,'-');
 
-        // TODO doesnt work!!!!!
         stream = gulp.src([
-            './dist_'+ type +'/'+ name + '/**/*'
+            './dist_'+ type +'/'+ name + '/*'
             ])
-            .pipe(zip({
-                name: name + ".zip",
-                outpath: './dist_'+ type +'/'
-            }));
-            // .pipe(zip(name +'.zip'))
-            // .pipe(gulp.dest('./dist_'+ type +'/'));
+            .pipe(zip(name +'.zip'))
+            .pipe(gulp.dest('./dist_'+ type +'/'));
 
         return stream;
     });

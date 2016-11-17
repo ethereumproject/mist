@@ -19,7 +19,7 @@ const i18n = require('./modules/i18n.js');
 const logger = require('./modules/utils/logger');
 const Sockets = require('./modules/sockets');
 const Windows = require('./modules/windows');
-
+const ClientBinaryManager = require('./modules/clientBinaryManager');
 
 const Settings = require('./modules/settings');
 Settings.init();
@@ -226,6 +226,7 @@ var onReady = function() {
     }
 
     if (!Settings.inAutoTestMode) {
+        log.info(`splash url ${global.interfacePopupsUrl + '#splashScreen_'+ Settings.uiMode}`);
         splashWindow = Windows.create('splash', {
             primary: true,
             url: global.interfacePopupsUrl + '#splashScreen_'+ Settings.uiMode,
@@ -266,6 +267,11 @@ var onReady = function() {
 
 
     const kickStart = function() {
+        // client binary stuff
+        ClientBinaryManager.on('status', function(status, data) {
+            Windows.broadcast('uiAction_clientBinaryStatus', status, data);
+        });
+
         // node connection stuff
         ethereumNode.on('nodeConnectionTimeout', function() {
             Windows.broadcast('uiAction_nodeStatus', 'connectionTimeout');
@@ -306,9 +312,11 @@ var onReady = function() {
             });
         });
 
-        // go!
-        ethereumNode.init()
-            .then(function sanityCheck() {
+        Q.try(() => {
+            return ClientBinaryManager.init()
+        }).then(() => {
+            return ethereumNode.init()
+        }).then(function sanityCheck() {
                 if (!ethereumNode.isIpcConnected) {
                     throw new Error('Either the node didn\'t start or IPC socket failed to connect.')
                 }
@@ -373,6 +381,7 @@ var onReady = function() {
             })
             .then(function doSync() {
                 // we're going to do the sync - so show splash
+                log.info("we're going to do the sync - so show splash");
                 if (splashWindow) {
                     splashWindow.show();
                 }

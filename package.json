@@ -1,8 +1,8 @@
 {
   "name": "Mist",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "license": "GPL-3.0",
-  "author": "Ethereum Classic Community",
+  "author": "Ethereum Classic Community <splix@ethereumclassic.org>",
   "contributors": [
     "Ethereum Mist Team <avsa@ethereum.org>"
   ],

@@ -80,11 +80,11 @@ function platformIsActive(osArch) {
 // TASKS
 gulp.task('set-variables-mist', () => {
     type = 'mist';
-    applicationName = 'Mist';
+    applicationName = 'Ethereum Classic Mist';
 });
 gulp.task('set-variables-wallet', () => {
     type = 'wallet';
-    applicationName = 'Ethereum Wallet';
+    applicationName = 'Ethereum Classic Wallet';
 });
 
 
@@ -129,6 +129,11 @@ gulp.task('copy-app-folder-files', ['copy-app-source-files'], (done) => {
 
 
 gulp.task('copy-build-folder-files', ['clean:dist', 'copy-app-folder-files'], () => {
+    //fix not generating icons
+    gulp.src([`./icons/${type}/icons/*`], { base: './' })
+        .pipe(flatten())
+        .pipe(gulp.dest(`./dist_${type}/build/icons`));
+
     return gulp.src([
         `./icons/${type}/*`,
         './interface/public/images/dmg-background.jpg',
@@ -218,7 +223,7 @@ gulp.task('build-dist', ['download-signatures', 'copy-i18n'], (cb) => {
     console.log('Bundling platforms: ', options.platform);
 
     const appPackageJson = _.extend({}, packJson, {
-        name: applicationName.replace(/\s/, ''),
+        name: applicationName.replace(/\s/g, ''),
         productName: applicationName,
         description: applicationName,
         homepage: 'https://github.com/ethereumproject/mist',
@@ -247,19 +252,21 @@ gulp.task('build-dist', ['download-signatures', 'copy-i18n'], (cb) => {
                 ],
             },
             dmg: {
-                // background: '../build/dmg-background.jpg', //TODO
+                background: '../build/dmg-background.jpg',
                 'icon-size': 128,
-                contents: [{
-                    x: 441,
-                    y: 448,
-                    type: 'link',
-                    path: '/Applications',
-                },
+                contents: [
                     {
-                        x: 441,
-                        y: 142,
+                        x: 470,
+                        y: 135,
+                        type: 'link',
+                        path: '/Applications',
+                    },
+                    {
+                        x: 125,
+                        y: 135,
                         type: 'file',
-                    }],
+                    }
+                ],
             },
         },
         directories: {
@@ -308,8 +315,8 @@ gulp.task('release-dist', ['build-dist'], (done) => {
     shell.rm('-rf', releasePath);
     shell.mkdir('-p', releasePath);
 
-    const appNameHypen = applicationName.replace(/\s/, '-');
-    const appNameNoSpace = applicationName.replace(/\s/, '');
+    const appNameHypen = applicationName.replace(/\s/g, '-');
+    const appNameNoSpace = applicationName.replace(/\s/g, '');
     const versionDashed = version.replace(/\./g, '-');
 
     const cp = (inputPath, outputPath) => {

@@ -23,7 +23,7 @@ if (argv.linux) {
 }
 
 builder.build({
-    targets: builder.createTargets(targets, null, 'all'),
+    targets: builder.createTargets(targets, null, 'x64'),
     devMetadata: {
         build: {
             afterPack(params) {

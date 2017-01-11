@@ -1,7 +1,7 @@
 {
   "clients": {
     "Geth": {
-      "version": "v3.0.1",
+      "version": "v3.2.3",
       "platforms": {
         "linux": {
           "x64": {

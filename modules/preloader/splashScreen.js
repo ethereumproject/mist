@@ -1,7 +1,6 @@
 require('./include/common')('splash');
 const mist = require('../mistAPI.js');
-const electron = require('electron');
-const ipc = electron.ipcRenderer;
+const { ipcRenderer: ipc, remote, webFrame } = require('electron');
 const ipcProviderWrapper = require('../ipc/ipcProviderWrapper.js');
 const Web3 = require('web3');
 require('../openExternal.js');
@@ -15,7 +14,7 @@ ipc.send('backendAction_setWindowId');
 ipc.send('backendAction_setLanguage', navigator.language);
 
 // disable pinch zoom
-electron.webFrame.setZoomLevelLimits(1, 1);
+webFrame.setZoomLevelLimits(1, 1);
 
 window.ipc = ipc;
 window.mist = mist();

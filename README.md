@@ -1,4 +1,7 @@
-# Mist Browser
+# Mist Classic Browser
+
+Mist Classic browser and wallet is a modified version of the [Mist](https://github.com/ethereum/mist) client restored to work with the original/classic chain. This client is maintained by the Ethereum Classic Project, the project that does not hardcode exceptions to the premise of unstoppable code. Ethereum Classic Project ensures unstoppable, censorship-resistant applications operating on a neutral world computer.
+
 
 [![Join the chat at https://gitter.im/ethereumproject/mist](https://badges.gitter.im/Join%20Chat.svg)](#TBD)
 [![Build status master branch ](https://build.ethdev.com/buildstatusimage?builder=Mist%20master%20branch)](#TBD)

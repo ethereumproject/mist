@@ -1,0 +1,58 @@
+{
+  "clients": {
+    "Geth": {
+      "version": "v3.2.3",
+      "platforms": {
+        "linux": {
+          "x64": {
+            "download": {
+              "url": "https://dl.bintray.com/ethereumproject/GoEthereumClassic/geth-classic-linux-x64-v3.2.3.zip",
+              "type": "zip",
+              "sha256": "e2b81a3dfe2ba20c0590c5f240f8698f70494e2b792d335811a209dcfafcf067"
+            },
+            "bin": "geth",
+            "commands": {
+              "sanity": {
+                "args": ["version"],
+                "output": [ "Geth", "3.2.3" ]
+              }
+            }
+          }
+        },
+        "mac": {
+          "x64": {
+            "download": {
+              "url": "https://dl.bintray.com/ethereumproject/GoEthereumClassic/geth-classic-darwin-v3.2.3.zip",
+              "type": "zip",
+              "sha256": "13a51e8a0e51471947086bc69dae6f515790e2bc81412b56763387f33bf9fa66"
+            },
+            "bin": "geth",
+            "commands": {
+              "sanity": {
+                "args": ["version"],
+                "output": [ "Geth", "3.2.3" ]
+              }
+            }
+          }
+        },
+        "win": {
+          "x64": {
+            "download": {
+              "url": "https://dl.bintray.com/ethereumproject/GoEthereumClassic/geth-classic-win64-v3.2.3.zip",
+              "type": "zip",
+              "sha256": "841daa1b24ae85149635c480c56ea9bfc05103bfcaa0dc0c1cd80fc0ec01c2cf",
+              "bin": "bin/geth.exe"
+            },
+            "bin": "geth.exe",
+            "commands": {
+              "sanity": {
+                "args": ["version"],
+                "output": [ "Geth", "3.2.3" ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,12 @@
 
 Mist Classic browser and wallet is a modified version of the [Mist](https://github.com/ethereum/mist) client restored to work with the original/classic chain. This client is maintained by the Ethereum Classic Project, the project that does not hardcode exceptions to the premise of unstoppable code. Ethereum Classic Project ensures unstoppable, censorship-resistant applications operating on a neutral world computer.
 
+**LOOKING FOR MAINTAINERS**
+
+**Project is compatible with ETC, but is not maintained. Mist has some issues with Windows #151 and doesn't have a build for Linux #35. If you're a JS developer with Windows or Linux, please take a look at this issues**
+
+**NOTICE The project is going to be replaced with Emerald Wallet, which is currently under development.**
+
 
 [![Join the chat at https://gitter.im/ethereumproject/mist](https://badges.gitter.im/Join%20Chat.svg)](#TBD)
 [![Build status master branch ](https://build.ethdev.com/buildstatusimage?builder=Mist%20master%20branch)](#TBD)

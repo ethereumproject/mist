@@ -1,20 +1,20 @@
 {
   "clients": {
     "Geth": {
-      "version": "v3.2.3",
+      "version": "v3.3.0",
       "platforms": {
         "linux": {
           "x64": {
             "download": {
-              "url": "https://dl.bintray.com/ethereumproject/GoEthereumClassic/geth-classic-linux-x64-v3.2.3.zip",
+              "url": "https://dl.bintray.com/ethereumproject/GoEthereumClassic/geth-classic-linux-v3.3.0-1-gdd95f05.zip",
               "type": "zip",
-              "sha256": "e2b81a3dfe2ba20c0590c5f240f8698f70494e2b792d335811a209dcfafcf067"
+              "sha256": "cc58d32320b4ba4cc420dd6dc7440a66ab7aa6cb58cf714f983a3ff954121057"
             },
             "bin": "geth",
             "commands": {
               "sanity": {
                 "args": ["version"],
-                "output": [ "Geth", "3.2.3" ]
+                "output": [ "Geth", "3.3.0" ]
               }
             }
           }
@@ -22,15 +22,15 @@
         "mac": {
           "x64": {
             "download": {
-              "url": "https://dl.bintray.com/ethereumproject/GoEthereumClassic/geth-classic-darwin-v3.2.3.zip",
+              "url": "https://dl.bintray.com/ethereumproject/GoEthereumClassic/geth-classic-osx-v3.3.0-1-gdd95f05.zip",
               "type": "zip",
-              "sha256": "13a51e8a0e51471947086bc69dae6f515790e2bc81412b56763387f33bf9fa66"
+              "sha256": "abc07a8cc89bbb561251c7421d893b2eed1f1865a14e933144c6a935505299c5"
             },
             "bin": "geth",
             "commands": {
               "sanity": {
                 "args": ["version"],
-                "output": [ "Geth", "3.2.3" ]
+                "output": [ "Geth", "3.3.0" ]
               }
             }
           }
@@ -38,16 +38,16 @@
         "win": {
           "x64": {
             "download": {
-              "url": "https://dl.bintray.com/ethereumproject/GoEthereumClassic/geth-classic-win64-v3.2.3.zip",
+              "url": "https://dl.bintray.com/ethereumproject/GoEthereumClassic/geth-classic-win64-v3.3.0-1-gdd95f055.zip",
               "type": "zip",
-              "sha256": "841daa1b24ae85149635c480c56ea9bfc05103bfcaa0dc0c1cd80fc0ec01c2cf",
+              "sha256": "c7cdbbcbb9edf51507ac35020e3abea5c99154a77569aee0e204c4ad8d6e97ce",
               "bin": "bin/geth.exe"
             },
             "bin": "geth.exe",
             "commands": {
               "sanity": {
                 "args": ["version"],
-                "output": [ "Geth", "3.2.3" ]
+                "output": [ "Geth", "3.3.0" ]
               }
             }
           }
